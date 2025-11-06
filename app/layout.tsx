@@ -15,11 +15,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Trung Anh - Software Developer",
   description: "Professional Portfolio",
-  icons: {
-    icon: '/eagle.png',
-    shortcut: '/eagle.png',
-    apple: '/eagle.png',
-  }
+  icons: [
+    {
+      rel: 'icon',
+      url: '/eagle.png',
+      type: 'image/png',
+      sizes: '32x32'
+    },
+    {
+      rel: 'icon',
+      url: '/eagle.png',
+      type: 'image/png',
+      sizes: '16x16'
+    },
+    {
+      rel: 'apple-touch-icon',
+      url: '/eagle.png',
+      type: 'image/png',
+      sizes: '180x180'
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -33,6 +48,8 @@ export default function RootLayout({
         <link rel="icon" href="/eagle.png" sizes="any" />
         <link rel="shortcut icon" href="/eagle.png" />
         <link rel="apple-touch-icon" href="/eagle.png" />
+        <meta name="theme-color" content="#0a0a0a" />
+        <link rel="canonical" href="https://your-domain.vercel.app" />
       </head>
       <body>
         <div className="min-h-screen bg-gray-900 text-white">
