@@ -1,5 +1,4 @@
-﻿
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 
 interface ExperienceProps {
   darkMode: boolean;
@@ -105,7 +104,6 @@ const Experience = ({ darkMode }: ExperienceProps) => {
 
   const activeData = activeTab === 'work' ? workExperience : education;
 
-
   return (
     <section 
       id='experience' 
@@ -156,27 +154,31 @@ const Experience = ({ darkMode }: ExperienceProps) => {
           <div className='absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-cyan-500 to-blue-600 hidden md:block'></div>
           
           <div className='space-y-8'>
-            {activeData.map((item, index) => (
+            {activeData.map((item, index) => {
+              const isWork = item.type === 'work';
+              const isLeft = isWork; // Work cards always on left, Education on right
+              
+              return (
               <div 
                 key={item.id}
-                className={'relative ' + (index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:ml-auto md:w-1/2') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
+                className={'relative ' + (isLeft ? 'md:pl-8 md:mr-12' : 'md:pl-8 md:ml-auto md:w-1/2 md:ml-12') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
                 style={{ animationDelay: (600 + (index * 150)) + 'ms' }}
               >
                 <div 
-                  className={'absolute top-0 w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 ' + (index % 2 === 0 ? 'md:left-auto md:right-0 md:transform md:translate-x-3' : 'md:left-0 md:transform md:-translate-x-3') + ' transform -translate-x-1/2 left-1/2'}
+                  className={'absolute top-0 w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 ' + (isLeft ? 'md:left-0 md:transform md:-translate-x-3' : 'md:left-0 md:transform md:-translate-x-3') + ' transform -translate-x-1/2 left-1/2'}
                 ></div>
                 
                 <div 
-                  className={(darkMode ? 'bg-gray-800/50 border-cyan-800/30 hover:border-cyan-600/50' : 'bg-white/70 border-gray-200/50 hover:border-cyan-400/50') + ' rounded-xl p-6 border backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md ' + (index % 2 === 0 ? 'md:mr-12' : 'md:ml-12')}
+                  className={(darkMode ? 'bg-gray-800/50 border-cyan-800/30 hover:border-cyan-600/50' : 'bg-white/70 border-gray-200/50 hover:border-cyan-400/50') + ' rounded-xl p-6 border backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md'}
                 >
-                  <div className={'flex items-center gap-2 mb-2 ' + (index % 2 === 0 ? 'md:justify-end' : '')}>
+                  <div className={'flex items-center gap-2 mb-2'}>
                     <h3 className={'text-xl font-semibold ' + (darkMode ? 'text-white' : 'text-gray-900')}>{item.position}</h3>
                     <span className={'px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-full border border-cyan-500/30'}>
-                      {item.type === 'work' ? '💼' : '🎓'} {item.type === 'work' ? 'Work' : 'Education'}
+                      {isWork ? '💼' : '🎓'} {isWork ? 'Work' : 'Education'}
                     </span>
                   </div>
                   
-                  <div className={'mb-2 text-cyan-400 ' + (index % 2 === 0 ? 'md:justify-end md:flex' : '')}>
+                  <div className={'mb-2 text-cyan-400'}>
                     <p className={'font-medium ' + (darkMode ? 'text-white' : 'text-gray-800')}>{item.company}</p>
                     <p className={darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-center gap-4>
                       <span className='flex items-center gap-1'>
@@ -198,7 +200,8 @@ const Experience = ({ darkMode }: ExperienceProps) => {
                   </ul>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -207,4 +210,3 @@ const Experience = ({ darkMode }: ExperienceProps) => {
 };
 
 export default Experience;
-
