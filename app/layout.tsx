@@ -15,26 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Trung Anh - Software Developer",
   description: "Professional Portfolio",
-  icons: [
-    {
-      rel: 'icon',
-      url: '/eagle.png',
-      type: 'image/png',
-      sizes: '32x32'
-    },
-    {
-      rel: 'icon',
-      url: '/eagle.png',
-      type: 'image/png',
-      sizes: '16x16'
-    },
-    {
-      rel: 'apple-touch-icon',
-      url: '/eagle.png',
-      type: 'image/png',
-      sizes: '180x180'
-    }
-  ]
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/eagle.png', type: 'image/png', sizes: '192x192' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: { url: '/eagle.png', sizes: '192x192' },
+  }
 };
 
 export default function RootLayout({
@@ -45,11 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/eagle.png" sizes="any" />
-        <link rel="shortcut icon" href="/eagle.png" />
-        <link rel="apple-touch-icon" href="/eagle.png" />
-        <meta name="theme-color" content="#0a0a0a" />
-        <link rel="canonical" href="https://your-domain.vercel.app" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" sizes="16x16" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body>
         <div className="min-h-screen bg-gray-900 text-white">
