@@ -161,7 +161,7 @@ const Experience = ({ darkMode }: ExperienceProps) => {
               return (
               <div 
                 key={item.id}
-                className={'relative ' + (isLeft ? 'md:pl-8 md:mr-12' : 'md:pl-8 md:ml-auto md:w-1/2 md:ml-12') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
+                className={'relative ' + (isLeft ? 'md:pl-8 md:mr-12 md:w-1/2' : 'md:pl-8 md:ml-auto md:w-1/2 md:ml-12') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
                 style={{ animationDelay: (600 + (index * 150)) + 'ms' }}
               >
                 <div 
