@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+interface SkillsProps {
+  darkMode: boolean;
+}
 import { 
   faPython, 
   faJava, 
@@ -15,7 +19,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase, faMobile, faCode, faFire, faRobot, faBrain, faCloud, faShieldAlt, faTasks, faComments } from '@fortawesome/free-solid-svg-icons';
 
-const Skills = () => {
+const Skills = ({ darkMode }: SkillsProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -109,7 +113,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-800/30" ref={ref}>
+    <section id="skills" className={`py-20 ${darkMode ? 'bg-gray-800/30' : 'bg-gray-100/50'} backdrop-blur-sm`} ref={ref}>
       <div className="container mx-auto px-6">
         <h2 className={`text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           Technical Skills
@@ -117,9 +121,9 @@ const Skills = () => {
         
         <div className={`grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
             {skills.map((skillGroup, groupIndex) => (
-              <div key={groupIndex} className="bg-gray-800/50 rounded-lg p-6 border border-cyan-800/30 hover:border-cyan-600/30 transition-all duration-300">
+              <div key={groupIndex} className={`${darkMode ? 'bg-gray-800/50 border-cyan-800/30 hover:border-cyan-600/30' : 'bg-white/70 border-gray-200/50 hover:border-cyan-400/30'} rounded-lg p-6 border backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md`}>
                 <div className="flex items-center mb-6">
-                  <div className={`w-10 h-10 rounded-lg bg-gray-800/50 flex items-center justify-center mr-3`}>
+                  <div className={`w-10 h-10 rounded-lg ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/70'} flex items-center justify-center mr-3`}>
                     <FontAwesomeIcon 
                       icon={skillGroup.icon} 
                       className={`text-2xl ${skillGroup.iconColor}`}
@@ -131,15 +135,15 @@ const Skills = () => {
                   {skillGroup.items.map((skill, skillIndex) => (
                     <div 
                       key={skillIndex}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-gray-700/30 hover:bg-gray-700/50 transition-all duration-300 group"
+                      className={`flex items-center gap-3 p-3 rounded-lg ${darkMode ? 'bg-gray-700/30 hover:bg-gray-700/50' : 'bg-gray-50/50 hover:bg-gray-100/70'} transition-all duration-300 group`}
                     >
-                      <div className={`w-8 h-8 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`w-8 h-8 rounded-lg ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/70'} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                         <FontAwesomeIcon 
                           icon={skill.icon} 
                           className={`text-lg ${skill.color}`}
                         />
                       </div>
-                      <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                      <span className={`${darkMode ? 'text-gray-300 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'} transition-colors duration-300`}>
                         {skill.name}
                       </span>
                     </div>
@@ -150,7 +154,7 @@ const Skills = () => {
           </div>
         
         <div className={`mt-16 text-center ${isVisible ? 'animate-fade-in animation-delay-700' : 'opacity-0'}`}>
-          <p className="text-xl text-gray-400 mb-8">
+          <p className={`text-xl ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-8`}>
             Excited about the future of technology and constantly expanding my skillset. 
             Here are some areas I'm currently diving into:
           </p>
@@ -158,7 +162,7 @@ const Skills = () => {
             {['Machine Learning', 'AI Frameworks', 'Mobile Development', 'Cloud Computing', 'DevOps Practices', 'Project Management'].map((topic, index) => (
               <span 
                 key={index}
-                className="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-cyan-400 rounded-full text-sm border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300"
+                className={`px-4 py-2 bg-gradient-to-r ${darkMode ? 'from-cyan-500/10 to-blue-500/10 text-cyan-400 border-cyan-500/20 hover:border-cyan-400/40' : 'from-cyan-100/50 to-blue-100/50 text-cyan-600 border-cyan-200/50 hover:border-cyan-300/70'} rounded-full text-sm border transition-all duration-300`}
               >
                 {topic}
               </span>

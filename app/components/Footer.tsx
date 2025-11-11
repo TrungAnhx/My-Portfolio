@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-const Footer = () => {
+interface FooterProps {
+  darkMode: boolean;
+}
+
+const Footer = ({ darkMode }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -8,14 +12,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-12 bg-gray-900/50 border-t border-cyan-800/30">
+    <footer className={`py-12 ${darkMode ? 'bg-gray-900/50 border-cyan-800/30' : 'bg-gray-100/50 border-gray-200/50'} border-t backdrop-blur-sm`}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-2">
               T.A. Dev
             </h3>
-            <p className="text-gray-400">
+            <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
               © {currentYear} Trung Anh. All rights reserved.
             </p>
           </div>
@@ -23,7 +27,7 @@ const Footer = () => {
           <div className="flex gap-6">
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all duration-300"
+              className={`w-10 h-10 rounded-full ${darkMode ? 'bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700' : 'bg-gray-200 text-gray-600 hover:text-cyan-600 hover:bg-gray-300'} flex items-center justify-center transition-all duration-300`}
               aria-label="Scroll to top"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,7 +39,7 @@ const Footer = () => {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all duration-300"
+              className={`w-10 h-10 rounded-full ${darkMode ? 'bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700' : 'bg-gray-200 text-gray-600 hover:text-cyan-600 hover:bg-gray-300'} flex items-center justify-center transition-all duration-300`}
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +51,7 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all duration-300"
+              className={`w-10 h-10 rounded-full ${darkMode ? 'bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700' : 'bg-gray-200 text-gray-600 hover:text-cyan-600 hover:bg-gray-300'} flex items-center justify-center transition-all duration-300`}
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -57,7 +61,7 @@ const Footer = () => {
             
             <a
               href="mailto:your-email@example.com"
-              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all duration-300"
+              className={`w-10 h-10 rounded-full ${darkMode ? 'bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700' : 'bg-gray-200 text-gray-600 hover:text-cyan-600 hover:bg-gray-300'} flex items-center justify-center transition-all duration-300`}
               aria-label="Email"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,16 +71,16 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
+        <div className={`mt-8 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'} flex flex-col md:flex-row justify-between items-center gap-4`}>
+          <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
             Built with Next.js, TypeScript, and Tailwind CSS
           </p>
           
-          <div className="flex gap-6 text-sm text-gray-400">
-            <Link href="#home" className="hover:text-cyan-400 transition-colors">Home</Link>
-            <Link href="#about" className="hover:text-cyan-400 transition-colors">About</Link>
-            <Link href="#projects" className="hover:text-cyan-400 transition-colors">Projects</Link>
-            <Link href="#contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
+          <div className={`flex gap-6 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <Link href="#home" className={`${darkMode ? 'hover:text-cyan-400' : 'hover:text-cyan-600'} transition-colors`}>Home</Link>
+            <Link href="#about" className={`${darkMode ? 'hover:text-cyan-400' : 'hover:text-cyan-600'} transition-colors`}>About</Link>
+            <Link href="#projects" className={`${darkMode ? 'hover:text-cyan-400' : 'hover:text-cyan-600'} transition-colors`}>Projects</Link>
+            <Link href="#contact" className={`${darkMode ? 'hover:text-cyan-400' : 'hover:text-cyan-600'} transition-colors`}>Contact</Link>
           </div>
         </div>
       </div>

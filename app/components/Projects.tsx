@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
+interface ProjectProps {
+  darkMode: boolean;
+}
+
 interface Project {
   id: number;
   title: string;
@@ -11,7 +15,7 @@ interface Project {
   featured: boolean;
 }
 
-const Projects = () => {
+const Projects = ({ darkMode }: ProjectProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [filter, setFilter] = useState('all');
   const ref = useRef<HTMLDivElement>(null);
@@ -111,7 +115,7 @@ const Projects = () => {
           Featured Projects
         </h2>
         
-        <p className={`text-center text-lg text-gray-400 mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
+        <p className={`text-center text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
           Here are some of my recent projects. Each one represents a different challenge and learning experience.
         </p>
         
@@ -121,7 +125,7 @@ const Projects = () => {
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               filter === 'all' 
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                : darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
             All Projects ({projects.length})
@@ -131,7 +135,7 @@ const Projects = () => {
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               filter === 'featured' 
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                : darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
             Featured ({projects.filter(p => p.featured).length})
@@ -142,7 +146,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className={`bg-gray-800/50 rounded-xl overflow-hidden border border-cyan-800/30 hover:border-cyan-600/50 transition-all duration-300 hover:transform hover:scale-105 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+              className={`${darkMode ? 'bg-gray-800/50 border-cyan-800/30 hover:border-cyan-600/50' : 'bg-white/70 border-gray-200/50 hover:border-cyan-400/50'} rounded-xl overflow-hidden border backdrop-blur-sm transition-all duration-300 hover:transform hover:scale-105 shadow-sm hover:shadow-md ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
               style={{ animationDelay: `${500 + (index * 100)}ms` }}
             >
               <div className="h-48 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center">
@@ -153,7 +157,7 @@ const Projects = () => {
               
               <div className="p-6">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-white group-hover:text-cyan-400' : 'text-gray-900 group-hover:text-cyan-600'} transition-colors`}>
                     {project.title}
                   </h3>
                   {project.featured && (
@@ -163,7 +167,7 @@ const Projects = () => {
                   )}
                 </div>
                 
-                <p className="text-gray-400 mb-4 line-clamp-2">
+                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4 line-clamp-2`}>
                   {project.description}
                 </p>
                 
@@ -171,13 +175,13 @@ const Projects = () => {
                   {project.technologies.slice(0, 3).map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="px-2 py-1 bg-gray-700/50 text-cyan-400 text-xs rounded border border-cyan-800/30"
+                      className={`px-2 py-1 ${darkMode ? 'bg-gray-700/50 text-cyan-400 border-cyan-800/30' : 'bg-gray-100/70 text-cyan-600 border-cyan-200/50'} text-xs rounded border`}
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-700/50 text-gray-400 text-xs rounded">
+                    <span className={`px-2 py-1 ${darkMode ? 'bg-gray-700/50 text-gray-400' : 'bg-gray-100/70 text-gray-500'} text-xs rounded`}>
                       +{project.technologies.length - 3}
                     </span>
                   )}
@@ -197,7 +201,7 @@ const Projects = () => {
                       Live Demo
                     </a>
                   </button>
-                  <button className="flex-1 px-4 py-2 bg-gray-700 text-white rounded-md font-medium hover:bg-gray-600 transition-all duration-300">
+                  <button className={`flex-1 px-4 py-2 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'} rounded-md font-medium transition-all duration-300`}>
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -218,7 +222,7 @@ const Projects = () => {
         
         {filteredProjectsCount === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400">No projects found for this filter.</p>
+            <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>No projects found for this filter.</p>
           </div>
         )}
       </div>

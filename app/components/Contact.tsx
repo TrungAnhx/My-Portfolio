@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+interface ContactProps {
+  darkMode: boolean;
+}
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import emailjs from '@emailjs/browser';
 import { emailjsConfig } from '../../lib/emailjs-config';
 
-export const Contact = () => {
+export const Contact = ({ darkMode }: ContactProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -152,17 +156,17 @@ export const Contact = () => {
           Get In Touch
         </h2>
         
-        <p className={`text-center text-lg text-gray-400 mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
+        <p className={`text-center text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
           I'm always interested in hearing about new projects and opportunities. 
           Whether you have a question or just want to say hi, feel free to reach out!
         </p>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <div className={`${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
-            <div className="bg-gray-800/50 rounded-xl p-8 border border-cyan-800/30">
+            <div className={`${darkMode ? 'bg-gray-800/50 border-cyan-800/30' : 'bg-white/70 border-gray-200/50'} rounded-xl p-8 border backdrop-blur-sm shadow-sm hover:shadow-md`}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
+                  <label htmlFor="name" className={`block ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2 font-medium`}>
                     Your Name
                   </label>
                   <input
@@ -172,13 +176,13 @@ export const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                    className={`w-full ${darkMode ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-400' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500'} rounded-lg px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
                     placeholder="Your Name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2 font-medium">
+                  <label htmlFor="email" className={`block ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2 font-medium`}>
                     Your Email
                   </label>
                   <input
@@ -188,13 +192,13 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                    className={`w-full ${darkMode ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-400' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500'} rounded-lg px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
                     placeholder="your.email@example.com"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-gray-300 mb-2 font-medium">
+                  <label htmlFor="message" className={`block ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2 font-medium`}>
                     Your Message
                   </label>
                   <textarea
@@ -204,7 +208,7 @@ export const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none"
+                    className={`w-full ${darkMode ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-400' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500'} rounded-lg px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none`}
                     placeholder="Your message here..."
                   ></textarea>
                 </div>
@@ -238,9 +242,9 @@ export const Contact = () => {
           </div>
           
           <div className={`${isVisible ? 'animate-slide-in-right animation-delay-200' : 'opacity-0'}`}>
-            <div className="bg-gray-800/50 rounded-xl p-8 border border-cyan-800/30">
+            <div className={`${darkMode ? 'bg-gray-800/50 border-cyan-800/30' : 'bg-white/70 border-gray-200/50'} rounded-xl p-8 border backdrop-blur-sm shadow-sm hover:shadow-md`}>
               <h3 className="text-2xl font-semibold mb-6 text-cyan-400">Let's Connect</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-8 leading-relaxed`}>
                 Feel free to reach out through any of these channels. I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
               </p>
               
@@ -248,21 +252,21 @@ export const Contact = () => {
                 {contactMethods.map((method, index) => (
                   <div key={index} className="group">
                     <div className="flex items-center gap-4 mb-3 group">
-                      <div className={`w-10 h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                      <div className={`w-10 h-10 rounded-lg ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/70'} flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg`}>
                         <FontAwesomeIcon 
                           icon={method.icon} 
                           className={`text-xl ${method.iconColor}`}
                         />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">{method.title}</h4>
+                        <h4 className={`text-lg font-medium ${darkMode ? 'text-white group-hover:text-cyan-400' : 'text-gray-900 group-hover:text-cyan-600'} transition-colors duration-300`}>{method.title}</h4>
                       </div>
                     </div>
                     <a 
                       href={method.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-3 ml-auto text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10 rounded-lg transition-all duration-300 group-hover:translate-x-1"
+                      className={`block p-3 ml-auto ${darkMode ? 'text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10' : 'text-cyan-600 hover:text-cyan-700 hover:bg-cyan-100/50'} rounded-lg transition-all duration-300 group-hover:translate-x-1`}
                     >
                       {method.info}
                     </a>
@@ -270,13 +274,13 @@ export const Contact = () => {
                 ))}
               </div>
               
-              <div className="mt-8 pt-8 border-t border-gray-700">
-                <h4 className="text-lg font-medium text-white mb-4">Available for</h4>
+              <div className={`mt-8 pt-8 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <h4 className={`text-lg font-medium ${darkMode ? 'text-white' : 'text-gray-900'} mb-4`}>Available for</h4>
                 <div className="flex flex-wrap gap-2">
                   {['Freelance Projects', 'Full-time Positions', 'Consulting', 'Collaborations'].map((item, index) => (
                     <span 
                       key={index}
-                      className="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors duration-300"
+                      className={`px-3 py-1 ${darkMode ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500/20' : 'bg-cyan-100/50 text-cyan-600 border-cyan-200/50 hover:bg-cyan-100/70'} rounded-full text-sm border transition-colors duration-300`}
                     >
                       {item}
                     </span>

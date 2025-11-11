@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
+interface ExperienceProps {
+  darkMode: boolean;
+}
+
 interface ExperienceItem {
   id: number;
   position: string;
@@ -10,7 +14,7 @@ interface ExperienceItem {
   type: 'work' | 'education';
 }
 
-const Experience = () => {
+const Experience = ({ darkMode }: ExperienceProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState<'work' | 'education'>('work');
   const ref = useRef<HTMLDivElement>(null);
@@ -111,24 +115,24 @@ const Experience = () => {
   const activeData = activeTab === 'work' ? workExperience : education;
 
   return (
-    <section id="experience" className="py-20 bg-gray-800/30" ref={ref}>
+    <section id="experience" className={`py-20 ${darkMode ? 'bg-gray-800/30' : 'bg-gray-100/50'} backdrop-blur-sm`} ref={ref}>
       <div className="container mx-auto px-6">
         <h2 className={`text-4xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           My Journey
         </h2>
         
-        <p className={`text-center text-lg text-gray-400 mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
+        <p className={`text-center text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-fade-in animation-delay-200' : 'opacity-0'}`}>
           From academic excellence to professional growth, here's my path in software development.
         </p>
         
         <div className={`flex justify-center mb-12 ${isVisible ? 'animate-fade-in animation-delay-400' : 'opacity-0'}`}>
-          <div className="inline-flex p-1 bg-gray-800 rounded-lg">
+          <div className={`inline-flex p-1 ${darkMode ? 'bg-gray-800' : 'bg-gray-200'} rounded-lg`}>
             <button
               onClick={() => setActiveTab('work')}
               className={`px-6 py-2 rounded-md font-medium transition-all duration-300 ${
                 activeTab === 'work' 
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                  : 'text-gray-400 hover:text-white'
+                  : darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Work Experience
@@ -138,7 +142,7 @@ const Experience = () => {
               className={`px-6 py-2 rounded-md font-medium transition-all duration-300 ${
                 activeTab === 'education' 
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                  : 'text-gray-400 hover:text-white'
+                  : darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Education
@@ -158,17 +162,17 @@ const Experience = () => {
               >
                 <div className={`absolute top-0 w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 ${index % 2 === 0 ? 'md:left-auto md:right-0 md:transform md:translate-x-3' : 'md:left-0 md:transform md:-translate-x-3'} transform -translate-x-1/2 left-1/2`}></div>
                 
-                <div className={`bg-gray-800/50 rounded-xl p-6 border border-cyan-800/30 hover:border-cyan-600/50 transition-all duration-300 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
+                <div className={`${darkMode ? 'bg-gray-800/50 border-cyan-800/30 hover:border-cyan-600/50' : 'bg-white/70 border-gray-200/50 hover:border-cyan-400/50'} rounded-xl p-6 border backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
                   <div className={`flex items-center gap-2 ${index % 2 === 0 ? 'md:justify-end' : ''} mb-3`}>
-                    <h3 className="text-xl font-semibold text-white">{item.position}</h3>
+                    <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{item.position}</h3>
                     <span className={`px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-full border border-cyan-500/30`}>
                       {item.type === 'work' ? '💼' : '🎓'} {item.type === 'work' ? 'Work' : 'Education'}
                     </span>
                   </div>
                   
                   <div className={`mb-3 text-cyan-400 ${index % 2 === 0 ? 'md:justify-end md:flex' : ''}`}>
-                    <p className="font-medium">{item.company}</p>
-                    <p className="text-gray-400 text-sm flex items-center gap-4">
+                    <p className={`font-medium ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.company}</p>
+                    <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-center gap-4`}>
                       <span className="flex items-center gap-1">
                         📍 {item.location}
                       </span>
@@ -180,7 +184,7 @@ const Experience = () => {
                   
                   <ul className={`space-y-2 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
                     {item.description.map((desc, descIndex) => (
-                      <li key={descIndex} className="text-gray-400 text-sm flex items-start gap-2">
+                      <li key={descIndex} className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-start gap-2`}>
                         {index % 2 === 0 ? (
                           <>
                             <span className="text-cyan-400 mt-1 ml-auto">•</span>
