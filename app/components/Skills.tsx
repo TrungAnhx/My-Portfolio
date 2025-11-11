@@ -50,7 +50,7 @@ const Skills = ({ darkMode }: SkillsProps) => {
         { name: 'Java', icon: faJava, color: 'text-orange-500' },
         { name: 'JavaScript', icon: faJsSquare, color: 'text-yellow-400' },
         { name: 'Swift (iOS)', icon: faApple, color: 'text-gray-300' }
-      ]
+      ] as Array<{name: string, icon?: any, color?: string, lightModeColor?: string, image?: string}>
     },
     { 
       name: 'Frameworks & Libraries',
@@ -70,8 +70,8 @@ const Skills = ({ darkMode }: SkillsProps) => {
       iconColor: 'text-blue-500',
       items: [
         { name: 'MySQL', icon: faDatabase, color: 'text-blue-500' },
-        { name: 'PostgreSQL', icon: faDatabase, color: 'text-blue-600' },
-        { name: 'MongoDB', icon: faDatabase, color: 'text-green-500' },
+        { name: 'PostgreSQL', icon: faDatabase, color: 'text-blue-600', image: '/postgresql.png' },
+        { name: 'MongoDB', icon: faDatabase, color: 'text-green-500', image: '/mongodb.png' },
         { name: 'Firebase', icon: faFire, color: 'text-orange-400' },
         { name: 'Supabase', icon: faDatabase, color: 'text-emerald-400' }
       ]
@@ -81,7 +81,7 @@ const Skills = ({ darkMode }: SkillsProps) => {
       icon: faMobile,
       iconColor: 'text-green-400',
       items: [
-        { name: 'Git/GitHub', icon: faGitAlt, color: 'text-orange-500' },
+        { name: 'Git/GitHub', icon: faGitAlt, color: 'text-orange-500', lightModeColor: 'text-gray-900' },
         { name: '.Android Studio', icon: faAndroid, color: 'text-green-400' },
         { name: 'Xcode', icon: faApple, color: 'text-gray-300' },
         { name: 'Visual Studio Code', icon: faCode, color: 'text-blue-400' }
@@ -104,7 +104,7 @@ const Skills = ({ darkMode }: SkillsProps) => {
       iconColor: 'text-blue-600',
       items: [
         { name: 'Jira', icon: faTasks, color: 'text-blue-600' },
-        { name: 'GitHub', icon: faGithub, color: 'text-white' },
+        { name: 'GitHub', icon: faGithub, color: 'text-white', lightModeColor: 'text-gray-900' },
         { name: 'GitLab', icon: faGitlab, color: 'text-orange-500' },
         { name: 'Trello', icon: faTrello, color: 'text-blue-500' },
         { name: 'Microsoft Project', icon: faTasks, color: 'text-blue-600' }
@@ -138,10 +138,18 @@ const Skills = ({ darkMode }: SkillsProps) => {
                       className={`flex items-center gap-3 p-3 rounded-lg ${darkMode ? 'bg-gray-700/30 hover:bg-gray-700/50' : 'bg-gray-50/50 hover:bg-gray-100/70'} transition-all duration-300 group`}
                     >
                       <div className={`w-8 h-8 rounded-lg ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/70'} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <FontAwesomeIcon 
-                          icon={skill.icon} 
-                          className={`text-lg ${skill.color}`}
-                        />
+                        {skill.image ? (
+                          <img 
+                            src={skill.image} 
+                            alt={skill.name}
+                            className="w-5 h-5 object-contain"
+                          />
+                        ) : (
+                          <FontAwesomeIcon 
+                            icon={skill.icon} 
+                            className={`text-lg ${skill.lightModeColor && !darkMode ? skill.lightModeColor : skill.color}`}
+                          />
+                        )}
                       </div>
                       <span className={`${darkMode ? 'text-gray-300 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'} transition-colors duration-300`}>
                         {skill.name}

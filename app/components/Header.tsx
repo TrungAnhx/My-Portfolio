@@ -33,7 +33,7 @@ const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <a href="#home" className={`text-2xl font-bold ${darkMode ? 'text-cyan-400 hover:text-cyan-300' : 'text-cyan-600 hover:text-cyan-700'} transition-colors`}>
-              T.A. Dev
+              TrungAnhx
             </a>
           </div>
 

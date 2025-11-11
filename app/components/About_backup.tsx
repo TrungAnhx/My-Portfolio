@@ -36,23 +36,21 @@ const About = ({ darkMode }: AboutProps) => {
         
         <div className="space-y-12">
           <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-            <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Software Developer</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-cyan-400">Passionate Software Developer</h3>
             <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-6 leading-relaxed`}>
-              I love developing software and creating applications that solve real problems. My passions include Artificial Intelligence 
-              with its fascinating models and algorithms, mobile development, and applying these technologies 
-              to address practical challenges in everyday life and work.
+              My journey started with Artificial Intelligence. I was fascinated by how machines could learn, think, 
+              and solve complex problems. Along the way, I discovered my passion for mobile development, 
+              especially creating Android and iOS apps that could bring these AI capabilities to everyday users.
             </p>
             <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-6 leading-relaxed`}>
-              I am interested in Artificial Intelligence and its potential to solve practical problems. 
-              I research various models and algorithms - from machine learning to neural networks - 
-              finding ways to apply them to real-world challenges effectively.
-              This exploration of AI algorithms helps me constantly learn and improve my problem-solving approaches.
+              My journey started with mobile development. For Android, I worked with Java and Kotlin to build responsive apps. 
+              For iOS, I learned Swift and SwiftUI to create smooth user experiences. 
+              Along the way, I discovered the power of AI and how it could make mobile apps much more intelligent.
             </p>
             <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-6 leading-relaxed`}>
-              I focus on mobile development and creating applications that serve specific purposes. 
-              This includes personal productivity apps, business solutions, and everyday tools. 
-              I build Android and iOS applications that streamline workflows and enhance efficiency.
-              My goal is to deliver mobile solutions that solve real user problems effectively.
+              What excites me most is how mobile development can be enhanced with AI. I've explored various AI models and algorithms 
+              to solve practical problems - from image recognition and natural language processing to predictive analytics. 
+              I believe the future belongs to apps that not only function but also think and learn from user behavior.
             </p>
             
             <div className="flex gap-6 mb-8">

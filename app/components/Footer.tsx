@@ -17,10 +17,10 @@ const Footer = ({ darkMode }: FooterProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-2">
-              T.A. Dev
+              TrungAnhx
             </h3>
             <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-              © {currentYear} Trung Anh. All rights reserved.
+              © {currentYear} Trần Đình Trung. All rights reserved.
             </p>
           </div>
           

@@ -12,7 +12,7 @@ const Hero = ({ darkMode }: HeroProps) => {
   
   const phrases = [
     'Software Developer',
-    'Full Stack Engineer',
+    'Full Stack Developer',
     'Problem Solver',
     'Tech Enthusiast'
   ];
@@ -68,7 +68,7 @@ const Hero = ({ darkMode }: HeroProps) => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
-            Trung Anh
+            Trần Đình Trung
           </h1>
           
           <h2 className="text-2xl md:text-4xl font-light mb-8 h-12">
