@@ -180,7 +180,7 @@ const Experience = ({ darkMode }: ExperienceProps) => {
                   
                   <div className={'mb-2 text-cyan-400'}>
                     <p className={'font-medium ' + (darkMode ? 'text-white' : 'text-gray-800')}>{item.company}</p>
-                    <p className={darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-center gap-4>
+                    <p className={(darkMode ? 'text-gray-400' : 'text-gray-600') + ' text-sm flex items-center gap-4'}>
                       <span className='flex items-center gap-1'>
                         📍 {item.location}
                       </span>
@@ -190,9 +190,9 @@ const Experience = ({ darkMode }: ExperienceProps) => {
                     </p>
                   </div>
                   
-                  <ul className={'space-y-1'}>
+                  <ul className={'space-y-3'}>
                     {item.description.map((desc, descIndex) => (
-                      <li key={descIndex} className={darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-start gap-1>
+                      <li key={descIndex} className={(darkMode ? 'text-gray-400' : 'text-gray-600') + ' text-sm flex items-start gap-3'}>
                         <span className='text-cyan-400 mt-0'>•</span>
                         <span>{desc}</span>
                       </li>
