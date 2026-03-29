@@ -74,30 +74,29 @@ const Experience = ({ darkMode }: ExperienceProps) => {
   const education: ExperienceItem[] = [
     {
       id: 3,
-      position: 'Bachelor of Computer Science',
+      position: 'Bachelor of Information Technology',
       company: 'Thuyloi University',
       location: 'Hanoi, Vietnam',
-      duration: '2016 - 2020',
+      duration: '2021 - 2026',
       type: 'education',
       description: [
-        'Graduated with honors (GPA: 3.7/4.0)',
-        'Specialized in Software Engineering and Web Development',
-        'Dean\'s List for 6 consecutive semesters',
-        'Completed capstone project on Real-time Data Processing Systems'
+        'Specialized in Information Technology and Software Development',
+        'Acquired strong foundation in programming, database management, and system analysis',
+        'Completed practical projects and coursework related to modern software engineering practices'
       ]
     },
     {
       id: 4,
-      position: 'Full Stack Web Development',
-      company: 'Coding Bootcamp',
+      position: 'Mobile Developer (iOS)',
+      company: 'Self-Directed Learning / Specialized Training',
       location: 'Online',
-      duration: '2020',
+      duration: '2023 - Present',
       type: 'education',
       description: [
-        'Intensive 6-month program focusing on modern web technologies',
-        'Built 10+ full-stack projects using MERN stack',
-        'Learned agile methodologies and version control with Git',
-        'Graduated with distinction and received \'Most Improved Developer\' award'
+        'Deepened knowledge in iOS development using Swift and SwiftUI',
+        'Focused on building intuitive user interfaces and smooth user experiences',
+        'Studied mobile app architecture, memory management, and performance optimization',
+        'Built several iOS applications exploring modern frameworks and API integrations'
       ]
     }
   ];
@@ -161,7 +160,7 @@ const Experience = ({ darkMode }: ExperienceProps) => {
               return (
               <div 
                 key={item.id}
-                className={'relative ' + (isLeft ? 'md:pl-8 md:mr-12 md:w-1/2' : 'md:pl-8 md:ml-auto md:w-1/2 md:ml-12') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
+                className={'relative ' + (isLeft ? 'md:pl-8 md:mr-16 md:w-1/2' : 'md:pl-8 md:ml-auto md:w-1/2 md:ml-12') + ' ' + (isVisible ? 'animate-slide-up' : 'opacity-0')}
                 style={{ animationDelay: (600 + (index * 150)) + 'ms' }}
               >
                 <div 

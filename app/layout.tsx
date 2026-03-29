@@ -40,7 +40,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body>
-        <div className="min-h-screen bg-gray-900 text-white">
+        <div className="min-h-screen bg-slate-50 text-slate-900">
           <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
             {children}
           </div>

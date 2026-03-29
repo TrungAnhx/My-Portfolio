@@ -11,10 +11,10 @@ import { Contact } from './components/Contact';
 import Footer from './components/Footer';
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`min-h-screen ${darkMode ? 'bg-slate-900 text-slate-50' : 'bg-slate-50 text-slate-900'}`}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero darkMode={darkMode} />
       <About darkMode={darkMode} />

@@ -39,6 +39,16 @@ const Projects = ({ darkMode }: ProjectProps) => {
 
   const projects: Project[] = [
     {
+      id: 0,
+      title: 'AI Patent Search',
+      description: 'An intelligent platform that combines traditional patent search with advanced AI capabilities for faster and more accurate discovery.',
+      image: '/projects/portfolio.jpg',
+      technologies: ['Next.js', 'AI', 'API', 'Tailwind CSS'],
+      liveUrl: 'https://patents-view-search-ov4s.vercel.app',
+      githubUrl: '#',
+      featured: true
+    },
+    {
       id: 1,
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with user authentication, payment processing, and admin dashboard for product management.',
