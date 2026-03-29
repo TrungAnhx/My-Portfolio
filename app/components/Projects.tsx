@@ -49,6 +49,16 @@ const Projects = ({ darkMode }: ProjectProps) => {
       featured: true
     },
     {
+      id: 7,
+      title: 'Patent Automation Workflow',
+      description: 'An automated n8n workflow that scrapes patent data from WIPO PatentScope, analyzes it using AI, and generates weekly insightful email reports via Google Sheets.',
+      image: '/projects/dashboard.jpg',
+      technologies: ['n8n', 'AI (LLM)', 'Google Sheets', 'Automation'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
       id: 1,
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with user authentication, payment processing, and admin dashboard for product management.',
