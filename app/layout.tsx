@@ -1,20 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Trung Anh - Software Developer",
-  description: "Professional Portfolio",
+  title: 'Trung Anh - Software Developer',
+  description: 'Professional Portfolio',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
@@ -22,30 +11,25 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.ico',
     apple: { url: '/eagle.png', sizes: '192x192' },
-  }
+  },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.ico" sizes="16x16" />
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body>
-        <div className="min-h-screen bg-slate-50 text-slate-900">
-          <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            {children}
-          </div>
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

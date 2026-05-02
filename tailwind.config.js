@@ -6,7 +6,14 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#DEDBC8',
+      },
+      fontFamily: {
+        serif: ['"Instrument Serif"', 'serif'],
+      },
+    },
   },
   plugins: [],
 }
