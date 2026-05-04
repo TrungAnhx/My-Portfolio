@@ -130,6 +130,15 @@ const projects = [
     featured: true,
     actionLabel: 'Private Bot',
   },
+  {
+    id: 4,
+    title: 'Face Recognition Mobile App',
+    description: 'A mobile application concept focused on fast and secure face recognition, designed for identity verification, user check-in, and practical AI-powered authentication workflows.',
+    technologies: ['Mobile App', 'Face Recognition', 'AI Vision', 'Authentication'],
+    liveUrl: '#',
+    githubUrl: '#',
+    featured: true,
+  },
 ];
 
 const workExperience = [
