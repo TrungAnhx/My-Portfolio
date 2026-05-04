@@ -102,39 +102,33 @@ const projects = [
   },
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with user authentication, payment processing, and admin dashboard for product management.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-    liveUrl: '#',
+    title: 'Savagers Web App',
+    description: 'A cinematic lifestyle and music web app where users can enjoy curated music, read thoughtful articles about everyday life, work, and culture, and explore a modern Liquid Glass-inspired interface.',
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+    liveUrl: 'https://savagers1.vercel.app',
     githubUrl: '#',
     featured: true,
+    actionLabel: 'Open App',
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Socket.io'],
-    liveUrl: '#',
+    title: 'Savagers Nutrition',
+    description: 'A food intelligence website for estimating nutrition across everyday ingredients and discovering cooking recipes from cuisines around the world.',
+    technologies: ['Nutrition Data', 'Recipe Search', 'Web App', 'UX Design'],
+    liveUrl: 'https://savagers.me',
     githubUrl: '#',
     featured: true,
+    actionLabel: 'Visit Site',
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'A responsive weather dashboard with location-based forecasts, interactive maps, and comprehensive weather data visualization.',
-    technologies: ['React', 'JavaScript', 'OpenWeather API'],
+    title: 'Discord MusicBot',
+    description: 'A Discord music bot built to play YouTube audio reliably in voice channels, with a music-app style queue experience, optimized search, playback controls, and a Lavalink plus yt-cipher stack for resilient YouTube playback.',
+    technologies: ['Python', 'Discord Bot', 'Lavalink', 'Wavelink', 'yt-cipher'],
     liveUrl: '#',
     githubUrl: '#',
-    featured: false,
-  },
-  {
-    id: 4,
-    title: 'Blog Platform',
-    description: 'Headless CMS-powered blog platform with rich text editor, SEO optimization, and responsive design.',
-    technologies: ['Next.js', 'Tailwind CSS', 'Strapi', 'PostgreSQL'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
+    featured: true,
+    actionLabel: 'Private Bot',
   },
 ];
 
@@ -531,7 +525,7 @@ function ProjectsSection() {
                     </button>
                   ) : (
                     <a href={project.liveUrl !== '#' ? project.liveUrl : undefined} target={project.liveUrl !== '#' ? '_blank' : undefined} rel="noopener noreferrer" className={`learn-link ${project.liveUrl === '#' ? 'pointer-events-none opacity-45' : ''}`}>
-                      {project.liveUrl !== '#' ? 'Live Demo' : 'Coming Soon'} <ArrowRight className="h-4 w-4 -rotate-45" />
+                      {project.actionLabel ?? (project.liveUrl !== '#' ? 'Live Demo' : 'Coming Soon')} <ArrowRight className="h-4 w-4 -rotate-45" />
                     </a>
                   )}
                   <a href={project.githubUrl !== '#' ? project.githubUrl : undefined} target={project.githubUrl !== '#' ? '_blank' : undefined} rel="noopener noreferrer" className={`icon-button ${project.githubUrl === '#' ? 'pointer-events-none opacity-45' : ''}`} aria-label={`${project.title} code`}>
